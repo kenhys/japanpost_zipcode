@@ -110,10 +110,12 @@ def update_zipcode():
 
     update_readme(jigyosyo_log, kenall_log, utf_kenall_log)
 
-    date = datetime.now().strftime('%Y-%m-%d')
+    # The files may have different dates, so use the newest one.
+    date = max(jigyosyo_info['Date'], kenall_info['Date'],
+               utf_kenall_info['Date'])
 
     output = f'''\
-Update data as of {date}    
+Update data as of {date}
 
 jigyosho.zip
 {jigyosyo_log}
